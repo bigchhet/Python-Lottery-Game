@@ -1,0 +1,66 @@
+#Chhai Chhet
+#1239352
+#Homework 2 Program Set 1
+#This program is a lottery game for users to guess winning value
+
+
+import random
+
+# generate a random number for winning lottery nuber
+prize = random.randint(10, 99)
+
+#logic for determining each digit of winning number for later comparison
+prizeFirst = (prize // 10) #float division
+prizeSecond = (prize % 10) #get remainder
+
+#declare the prize statements
+low = "You win $1,000"
+mid = "You win $3,000"
+high = "You win $10,000!"
+
+#initiliaze variables
+output = ""
+
+#declare win bool
+win = False
+
+#indicate to me what the current winning number is
+print("number: ", prize) #delete later
+
+#prompt the user to enter their initial guess
+guess = int(input("Enter your lottery pick ( 2 digits) or -999 to quit:"))
+
+#logic to keep player in loop until they guess right number
+while ((win != True) and (guess != -999)):
+    
+    #logic for getting each digit if user guess and constantly updating
+    guessFirst = (guess // 10) #float division
+    guessSecond = (guess % 10) #get remainder
+    
+    #if user input matches in exact order
+    if(guess == prize):
+        output = high
+        win = True
+    #if user input matches all number but in wrong order
+    elif((guessFirst == prizeSecond) and (guessSecond == prizeFirst)):
+        output = mid
+        win = True
+    #if user input only matches one number
+    elif((guessFirst == prizeFirst) or (guessSecond == prizeSecond)):
+        output = low
+        win = True
+    else:
+        print("Sorry no match")
+        guess = int(input("Enter your lottery pick ( 2 digits) or -999 to quit:"))
+#this print statement only runs when the user wins a prize        
+print(output)
+
+
+#Lottery program. The program randomly generates a two-digit number, prompts the user to enter a single twodigit number,
+#and determines whether the user wins according to the following rules. Write a loop to let the user
+#play as many times as the user wanted. Use a sentinel or flag to quit out of the loop. You must pick the correct
+#loop for this question. Each time the user continues to play, the program will generate a new two-digit random
+#number until the user enters -999 to quit.
+#1. if the user’s input matches the lottery in the exact order, the award is $10,000.
+#2. if all the digits in the user’s input match all the digits in the lottery number, the award is $3,000.
+#3. if one digit in the user’s input matches a digit in the lottery number, the award is $1,000.
