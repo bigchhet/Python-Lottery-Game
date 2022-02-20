@@ -1,0 +1,58 @@
+#Chhai Chhet
+
+income = int(input("Enter income as an integer with no commas:"))
+
+#create a while loop to continuallu prompt user to prompt more info
+
+#initialize 2018 rate to 0
+rate2018 = 0
+rate2017 = 0
+total = 0
+
+#determining tax bracket for 2018
+if(income <= 9525):
+    rate2018 = 10
+elif((income > 9525) and (income <= 38700)):
+    rate2018 = 12
+elif((income > 38700) and (income <= 82500)):
+    rate2018 = 22
+elif((income > 82500) and (income <= 157500)):
+    rate2018 = 24
+elif((income > 157500) and (income <= 200000)):
+    rate2018 = 32
+elif((income > 200000) and (income <= 500000)):
+    rate2018 = 35
+elif(income > 500000):
+     rate2018 = 37
+
+#determining tax bracket for 2017
+if(income <= 9325):
+    #rate2017 = 10
+    rate2017 = (9325 * .10) #932.5
+    
+elif((income > 9325) and (income <= 37950)):
+    #rate2017 = 15
+    rate2017 = (932.5) + ((37950 - 932.6) * .05) #932.5 + 1850.87 = 2783.37
+    
+elif((income > 37950) and (income <= 91900)):
+    #rate2017 = 25
+    rate2017 = 2783.37 + ((91900 - 37951) * .10) #2783.37 + 5394.9 = 8178.27
+elif((income > 91900) and (income <= 191650)):
+    #rate2017 = 28
+    rate2017 = 8178.27 + ((191650 - 91901) * .03) #8178.27 + 2992.47 = 11170.74
+elif((income > 191650) and (income <= 416700)):
+    rate2017 = 33
+elif((income > 416700) and (income <= 418400)):
+    rate2017 = 35
+elif(income > 418400):
+     rate2017 = 39.6
+
+
+taxDifference = (rate2018 - rate2017)
+taxPercentDifference = abs(((rate2018 - rate2017) / rate2017 ) * 100) #ask professor if we can use abs function
+
+print("tax difference: ", taxDifference)
+print("Percent change", taxPercentDifference)
+print("2018: ", rate2018)
+print("2017: ", rate2017)
+    
